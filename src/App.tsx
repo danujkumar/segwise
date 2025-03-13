@@ -1,8 +1,8 @@
-import { useState } from "react";
+// import { useState } from "react";
 import "./App.css";
 import Login from "./views/Login";
 import Dashboard from "./views/Dashboard";
-import { Route, RouterProvider, createBrowserRouter } from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 const routes = createBrowserRouter([
   {
