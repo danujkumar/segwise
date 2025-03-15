@@ -163,7 +163,8 @@ function Row(props: Readonly<{ row: ReturnType<typeof createData> }>) {
 
 export default function Tables() {
   return (
-    <TableContainer component={Paper}>
+    <div className='flex justify-center mt-5'>
+    <TableContainer style={{width:'93%', borderColor:'#F6FDED', borderWidth:'1px', height: '68vh'}} component={Paper}>
       <Table aria-label="collapsible table">
         <TableHead>
           <TableRow>
@@ -193,5 +194,6 @@ export default function Tables() {
         </TableBody>
       </Table>
     </TableContainer>
+    </div>
   );
 }
