@@ -1,9 +1,15 @@
 // import React from 'react'
 
+import Filter from "../components/Filter";
+import Navbar from "../components/navbar";
+
 export function Dashboard() {
   return (
-    <div className="space-y-8 pl-3 flex-1 mt-10 bg-amber-700">Dashboard</div>
-  )
+    <>
+      <Navbar />
+      <Filter />
+    </>
+  );
 }
 
-export default Dashboard
+export default Dashboard;
