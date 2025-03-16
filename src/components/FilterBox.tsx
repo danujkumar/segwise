@@ -43,7 +43,7 @@ function FilterBox() {
   const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
-  // const [filters, setFilters] = useState(1);
+  const [filters, setFilters] = useState(1);
   const [box, setBox] = React.useState(false);
   const [bgColor, setBgColor] = React.useState("#FFFFFF");
   return (
@@ -78,7 +78,7 @@ function FilterBox() {
             </div>
           </div>
         </button>
-        {Array.from({ length: 4 }, (_, index) => (
+        {Array.from({ length: filters }, (_, index) => (
             <FilterSelect key={index} />
         ))}
       </div>

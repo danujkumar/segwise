@@ -114,7 +114,7 @@ export default Modal;
 
 const styles: Record<string, React.CSSProperties> = {
   container: {
-    height: "14vh",
+    height: "120px",
     width: "20vw",
     backgroundColor: "#fff",
     position: "absolute",

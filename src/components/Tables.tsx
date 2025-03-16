@@ -11,6 +11,7 @@ import { searchKeyword, sortJSONByKey } from "../operations";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { Box, Collapse, IconButton, Typography } from "@mui/material";
+import { useState } from "react";
 
 const formatValue = (value: string | number): string => {
   if (typeof value === "number") {
@@ -81,37 +82,168 @@ function Row(props: Readonly<{ row: ReturnType<typeof createData> }>) {
         style={{ backgroundColor: color }}
         sx={{ "& > *": { borderBottom: "unset" } }}
       >
-        <TableCell onMouseEnter={()=>setColor("lightgreen")} onMouseLeave={()=>{setColor("#FFFFFF")}}>
+        <TableCell
+          onClick={() => { 
+            color === "#E3FA99" ? setColor("#FFFFFF") : setColor("#E3FA99");
+          }}
+          
+        >
           <IconButton
             aria-label="expand row"
             size="small"
             onClick={() => {
               setOpen(!open);
               console.log(searchKeyword(data, "Play now"));
-              console.log(sortJSONByKey(data, "ipm"));
             }}
           >
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
-        <TableCell onMouseEnter={()=>setColor("lightgreen")} onMouseLeave={()=>{setColor("#FFFFFF")}} component="th" scope="row">
+        <TableCell
+          onClick={() => { 
+            color === "#E3FA99" ? setColor("#FFFFFF") : setColor("#E3FA99");
+          }}
+          
+          component="th"
+          scope="row"
+        >
           {formatValue(row.creative_name)}
         </TableCell>
-        <TableCell onMouseEnter={()=>setColor("lightgreen")} onMouseLeave={()=>{setColor("#FFFFFF")}} align="right">{formatValue(row.creative_id)}</TableCell>
-        <TableCell onMouseEnter={()=>setColor("lightgreen")} onMouseLeave={()=>{setColor("#FFFFFF")}} align="right">{formatValue(row.country)}</TableCell>
-        <TableCell onMouseEnter={()=>setColor("lightgreen")} onMouseLeave={()=>{setColor("#FFFFFF")}} align="right">{formatValue(row.ad_network)}</TableCell>
-        <TableCell onMouseEnter={()=>setColor("lightgreen")} onMouseLeave={()=>{setColor("#FFFFFF")}} align="right">{formatValue(row.os)}</TableCell>
-        <TableCell onMouseEnter={()=>setColor("lightgreen")} onMouseLeave={()=>{setColor("#FFFFFF")}} align="right">{formatValue(row.campaign)}</TableCell>
-        <TableCell onMouseEnter={()=>setColor("lightgreen")} onMouseLeave={()=>{setColor("#FFFFFF")}} align="right">{formatValue(row.ad_group)}</TableCell>
-        <TableCell onMouseEnter={()=>setColor("lightgreen")} onMouseLeave={()=>{setColor("#FFFFFF")}} align="right">{formatValue(row.ipm)}</TableCell>
-        <TableCell onMouseEnter={()=>setColor("lightgreen")} onMouseLeave={()=>{setColor("#FFFFFF")}} align="right">{formatValue(row.ctr)}</TableCell>
-        <TableCell onMouseEnter={()=>setColor("lightgreen")} onMouseLeave={()=>{setColor("#FFFFFF")}} align="right">{formatValue(row.spend)}</TableCell>
-        <TableCell onMouseEnter={()=>setColor("lightgreen")} onMouseLeave={()=>{setColor("#FFFFFF")}} align="right">{formatValue(row.impressions)}</TableCell>
-        <TableCell onMouseEnter={()=>setColor("lightgreen")} onMouseLeave={()=>{setColor("#FFFFFF")}} align="right">{formatValue(row.clicks)}</TableCell>
-        <TableCell onMouseEnter={()=>setColor("lightgreen")} onMouseLeave={()=>{setColor("#FFFFFF")}} align="right">{formatValue(row.cpm)}</TableCell>
-        <TableCell onMouseEnter={()=>setColor("lightgreen")} onMouseLeave={()=>{setColor("#FFFFFF")}} align="right">{formatValue(row.cpc)}</TableCell>
-        <TableCell onMouseEnter={()=>setColor("lightgreen")} onMouseLeave={()=>{setColor("#FFFFFF")}} align="right">{formatValue(row.cpi)}</TableCell>
-        <TableCell onMouseEnter={()=>setColor("lightgreen")} onMouseLeave={()=>{setColor("#FFFFFF")}} align="right">{formatValue(row.installs)}</TableCell>
+        <TableCell
+          onClick={() => { 
+            color === "#E3FA99" ? setColor("#FFFFFF") : setColor("#E3FA99");
+          }}
+          
+          align="center"
+        >
+          {formatValue(row.creative_id)}
+        </TableCell>
+        <TableCell
+          onClick={() => { 
+            color === "#E3FA99" ? setColor("#FFFFFF") : setColor("#E3FA99");
+          }}
+          
+          align="center"
+        >
+          {formatValue(row.country)}
+        </TableCell>
+        <TableCell
+          onClick={() => { 
+            color === "#E3FA99" ? setColor("#FFFFFF") : setColor("#E3FA99");
+          }}
+          
+          align="center"
+        >
+          {formatValue(row.ad_network)}
+        </TableCell>
+        <TableCell
+          onClick={() => { 
+            color === "#E3FA99" ? setColor("#FFFFFF") : setColor("#E3FA99");
+          }}
+          
+          align="center"
+        >
+          {row.os}
+        </TableCell>
+        <TableCell
+          onClick={() => { 
+            color === "#E3FA99" ? setColor("#FFFFFF") : setColor("#E3FA99");
+          }}
+          
+          align="center"
+        >
+          {formatValue(row.campaign)}
+        </TableCell>
+        <TableCell
+          onClick={() => { 
+            color === "#E3FA99" ? setColor("#FFFFFF") : setColor("#E3FA99");
+          }}
+          
+          align="center"
+        >
+          {formatValue(row.ad_group)}
+        </TableCell>
+        <TableCell
+          onClick={() => { 
+            color === "#E3FA99" ? setColor("#FFFFFF") : setColor("#E3FA99");
+          }}
+          
+          align="center"
+        >
+          {formatValue(row.ipm)}
+        </TableCell>
+        <TableCell
+          onClick={() => { 
+            color === "#E3FA99" ? setColor("#FFFFFF") : setColor("#E3FA99");
+          }}
+          
+          align="center"
+        >
+          {formatValue(row.ctr)}
+        </TableCell>
+        <TableCell
+          onClick={() => { 
+            color === "#E3FA99" ? setColor("#FFFFFF") : setColor("#E3FA99");
+          }}
+          
+          align="center"
+        >
+          {formatValue(row.spend)}
+        </TableCell>
+        <TableCell
+          onClick={() => { 
+            color === "#E3FA99" ? setColor("#FFFFFF") : setColor("#E3FA99");
+          }}
+          
+          align="center"
+        >
+          {formatValue(row.impressions)}
+        </TableCell>
+        <TableCell
+          onClick={() => { 
+            color === "#E3FA99" ? setColor("#FFFFFF") : setColor("#E3FA99");
+          }}
+          
+          align="center"
+        >
+          {formatValue(row.clicks)}
+        </TableCell>
+        <TableCell
+          onClick={() => { 
+            color === "#E3FA99" ? setColor("#FFFFFF") : setColor("#E3FA99");
+          }}
+          
+          align="center"
+        >
+          {formatValue(row.cpm)}
+        </TableCell>
+        <TableCell
+          onClick={() => { 
+            color === "#E3FA99" ? setColor("#FFFFFF") : setColor("#E3FA99");
+          }}
+          
+          align="center"
+        >
+          {formatValue(row.cpc)}
+        </TableCell>
+        <TableCell
+          onClick={() => { 
+            color === "#E3FA99" ? setColor("#FFFFFF") : setColor("#E3FA99");
+          }}
+          
+          align="center"
+        >
+          {formatValue(row.cpi)}
+        </TableCell>
+        <TableCell
+          onClick={() => { 
+            color === "#E3FA99" ? setColor("#FFFFFF") : setColor("#E3FA99");
+          }}
+          
+          align="center"
+        >
+          {formatValue(row.installs)}
+        </TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -168,6 +300,7 @@ function Row(props: Readonly<{ row: ReturnType<typeof createData> }>) {
 }
 
 export default function Tables() {
+  const [sortData, setSortData] = useState(data);
   return (
     <div className="flex justify-center mt-5">
       <TableContainer
@@ -176,33 +309,170 @@ export default function Tables() {
           borderColor: "#F6FDED",
           borderWidth: "1px",
           height: "68vh",
+          
         }}
         component={Paper}
       >
-        <Table aria-label="collapsible table">
-          <TableHead>
-            <TableRow>
+        <Table style={{cursor:'default'}} aria-label="collapsible table">
+          <TableHead sx={{
+            backgroundColor: "#F6FDED",
+            color: "#4B5563",
+            fontWeight: "bold",
+            fontSize: "16px",
+            position: "sticky",
+            top: 0,
+            zIndex: 15
+          }} >
+            <TableRow style={{border:"3px"}}>
               <TableCell />
-              <TableCell>Name</TableCell>
-              <TableCell align="right">Id</TableCell>
-              <TableCell align="right">Country</TableCell>
-              <TableCell align="right">Network</TableCell>
-              <TableCell align="right">OS</TableCell>
-              <TableCell align="right">Campaign</TableCell>
-              <TableCell align="right">Group</TableCell>
-              <TableCell align="right">IPM</TableCell>
-              <TableCell align="right">CTR</TableCell>
-              <TableCell align="right">Spend</TableCell>
-              <TableCell align="right">Impressions</TableCell>
-              <TableCell align="right">Clicks</TableCell>
-              <TableCell align="right">CPM</TableCell>
-              <TableCell align="right">Cost per click</TableCell>
-              <TableCell align="right">Cost per install</TableCell>
-              <TableCell align="right">Installs</TableCell>
+              <TableCell
+                onClick={() => {
+                  setSortData(sortJSONByKey(data, "creative_name"));
+                }}
+                style={{fontWeight:'bold'}}
+              >
+                Name
+              </TableCell>
+              <TableCell
+                onClick={() => {
+                  setSortData(sortJSONByKey(data, "creative_id"));
+                }}
+                style={{fontWeight:'bold'}}
+                align="center"
+              >
+                Id
+              </TableCell>
+              <TableCell
+                onClick={() => {
+                  setSortData(sortJSONByKey(data, "country"));
+                }}
+                align="center"
+                style={{fontWeight:'bold'}}
+              >
+                Country
+              </TableCell>
+              <TableCell
+                onClick={() => {
+                  setSortData(sortJSONByKey(data, "ad_network"));
+                }}
+                align="center"
+                style={{fontWeight:'bold'}}
+              >
+                Network
+              </TableCell>
+              <TableCell
+                onClick={() => {
+                  setSortData(sortJSONByKey(data, "os"));
+                }}
+                align="center"
+                style={{fontWeight:'bold'}}
+              >
+                OS
+              </TableCell>
+              <TableCell
+                onClick={() => {
+                  setSortData(sortJSONByKey(data, "campaign"));
+                }}
+                align="center"
+                style={{fontWeight:'bold'}}
+              >
+                Campaign
+              </TableCell>
+              <TableCell
+                onClick={() => {
+                  setSortData(sortJSONByKey(data, "ad_group"));
+                }}
+                align="center"
+                style={{fontWeight:'bold'}}
+              >
+                Group
+              </TableCell>
+              <TableCell
+                onClick={() => {
+                  setSortData(sortJSONByKey(data, "ipm"));
+                }}
+                align="center"
+                style={{fontWeight:'bold'}}
+              >
+                IPM
+              </TableCell>
+              <TableCell
+                onClick={() => {
+                  setSortData(sortJSONByKey(data, "ctr"));
+                }}
+                align="center"
+                style={{fontWeight:'bold'}}
+              >
+                CTR
+              </TableCell>
+              <TableCell
+                onClick={() => {
+                  setSortData(sortJSONByKey(data, "spend"));
+                }}
+                align="center"
+                style={{fontWeight:'bold'}}
+              >
+                Spend
+              </TableCell>
+              <TableCell
+                onClick={() => {
+                  setSortData(sortJSONByKey(data, "impressions"));
+                }}
+                align="center"
+                style={{fontWeight:'bold'}}
+              >
+                Impressions
+              </TableCell>
+              <TableCell
+                onClick={() => {
+                  setSortData(sortJSONByKey(data, "clicks"));
+                }}
+                align="center"
+                style={{fontWeight:'bold'}}
+              >
+                Clicks
+              </TableCell>
+              <TableCell
+                onClick={() => {
+                  setSortData(sortJSONByKey(data, "cpm"));
+                }}
+                align="center"
+                style={{fontWeight:'bold'}}
+              >
+                CPM
+              </TableCell>
+              <TableCell
+                onClick={() => {
+                  setSortData(sortJSONByKey(data, "cpc"));
+                }}
+                align="center"
+                style={{fontWeight:'bold'}}
+              >
+                CPC
+              </TableCell>
+              <TableCell
+                onClick={() => {
+                  setSortData(sortJSONByKey(data, "cpi"));
+                }}
+                align="center"
+                style={{fontWeight:'bold'}}
+              >
+                CPI
+              </TableCell>
+              <TableCell
+                onClick={() => {
+                  setSortData(sortJSONByKey(data, "installs"));
+                }}
+                align="center"
+                style={{fontWeight:'bold'}}
+              >
+                Installs
+              </TableCell>
             </TableRow>
           </TableHead>
+
           <TableBody>
-            {data.map((row) => (
+            {sortData.map((row) => (
               <Row key={row.creative_id} row={row} />
             ))}
           </TableBody>
