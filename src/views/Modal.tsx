@@ -52,9 +52,10 @@ interface Props {
       ctabgcolor: string,
     },
   };
+  onClose: (close: boolean) => void; 
 }
 
-const Modal: React.FC<Props> = ({ data }) => {
+const Modal: React.FC<Props> = ({ data, onClose }) => {
   const [isHovered, setIsHovered] = useState(false)
   const [enlarge, setEnlarge] = useState(false)
   const closeEnlarge = (close: boolean) => {
@@ -110,6 +111,9 @@ const Modal: React.FC<Props> = ({ data }) => {
           >
             <MyIcon />
           </button>
+          <button onClick={() => {
+            onClose(false)
+          }}>
           <span
             style={{
               cursor: 'pointer',
@@ -119,6 +123,7 @@ const Modal: React.FC<Props> = ({ data }) => {
           >
             x
           </span>
+          </button>
         </div>
 
         <div

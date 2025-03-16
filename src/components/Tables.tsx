@@ -79,6 +79,10 @@ function Row(props: Readonly<{ row: ReturnType<typeof createData> }>) {
   const [open, setOpen] = useState(false);
   const [color, setColor] = useState("#FFFFFF");
   const [modal, setModal] = useState(false);
+  const closeModal = (close: boolean) => {
+    setModal(close)
+    setColor("#FFFFFF")
+  };
   return (
     <>
       <TableRow
@@ -309,7 +313,7 @@ function Row(props: Readonly<{ row: ReturnType<typeof createData> }>) {
           </Collapse>
         </TableCell>
       </TableRow>
-      {modal && <Modal data={row} />}
+      {modal && <Modal onClose={closeModal} data={row} />}
     </>
   );
 }
