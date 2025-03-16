@@ -39,7 +39,7 @@ function a11yProps(index: number) {
 }
 
 function FilterBox() {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
   const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
