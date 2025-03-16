@@ -1,9 +1,17 @@
-// import React from 'react'
+import Filter from "../components/Filter";
+import Navbar from "../components/navbar";
+import Tables from "../components/Tables";
+import Modal from "./Modal";
 
-function Dashboard() {
+export function Dashboard() {
   return (
-    <div className="space-y-8 pl-3 flex-1 mt-10 bg-amber-700">Dashboard</div>
-  )
+    <>
+      <Navbar />
+      <Filter />
+      <Tables />
+      <Modal />
+    </>
+  );
 }
 
-export default Dashboard
+export default Dashboard;
