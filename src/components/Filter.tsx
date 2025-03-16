@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "../styles/navbar.css";
 import FilterIcon from "../assets/Filter";
 import Dropdown from "../assets/Dropdown";
 import FilterBox from "./FilterBox";
-import FilterSelect from "./FilterSelect";
 
 function Filter() {
   const [show, setShow] = useState(false);
@@ -42,7 +41,7 @@ function Filter() {
         </div>
         {show && (
           <button onClick={() => setFilters(filters + 1)}>
-            <div className="absolute">
+            <div className="absolute z-10">
               <FilterBox />
             </div>
           </button>

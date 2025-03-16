@@ -3,7 +3,7 @@ import "./App.css";
 import Dashboard from "./views/Dashboard";
 
 const router = createBrowserRouter([
-  { path: "/dashboard", element: <Dashboard /> }
+  { path: "/", element: <Dashboard /> }
 ]);
 
 function App() {

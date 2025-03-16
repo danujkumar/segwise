@@ -15,13 +15,11 @@
   height: 68px;
 
   background: #f5f8fa;
-  /* background: red; */
   border: 1px solid rgba(0, 0, 0, 0.04);
   border-radius: 16px;
 }
 
 .filter {
-  /* Frame 1430103345 */
 
   box-sizing: border-box;
 
@@ -50,3 +48,6 @@
   flex-grow: 0;
 }
 
+.filter:hover {
+  background: #f5f8fa;
+}

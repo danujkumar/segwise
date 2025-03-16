@@ -8,7 +8,6 @@ import MenuItem from "@mui/material/MenuItem";
 import Checkbox from "@mui/material/Checkbox";
 import ListItemText from "@mui/material/ListItemText";
 import FilterSelect from "./FilterSelect";
-// import "../styles/filterbox.css";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -16,7 +15,7 @@ interface TabPanelProps {
   value: number;
 }
 
-function CustomTabPanel(props: TabPanelProps) {
+function CustomTabPanel(props: Readonly<TabPanelProps>) {
   const { children, value, index, ...other } = props;
 
   return (
@@ -41,25 +40,28 @@ function a11yProps(index: number) {
 
 function FilterBox() {
   const [value, setValue] = React.useState(0);
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
   const [filters, setFilters] = useState(1);
   const [box, setBox] = React.useState(false);
+  const [bgColor, setBgColor] = React.useState("#FFFFFF");
   return (
     <div className="flex flex-col items-center w-fit">
       <div
-        className="w-fit m-1 rounded-md"
+        className="w-fit m-1 rounded-md border-1 border-gray-200"
         style={{
           padding: "0.5px",
           height: "fit-content",
-          backgroundColor: "#f2f2f2",
+          backgroundColor: "#FFFFFF",
         }}
       >
-        <button onClick={() => setBox(!box)}>
+        <button className="group" onClick={() => setBox(!box)}>
           <div
-            className="w-80 m-2 h-10 flex items-center rounded-md"
-            style={{ background: "#F6FDED" }}
+            className="w-80 m-2 mb-0 h-10 flex items-center rounded-md border-1 border-gray-200 group-hover:bg-green-200 transition"
+            style={{ background: bgColor,   }}
+            onMouseEnter={() => setBgColor("#F6FDED")}
+            onMouseLeave={() => setBgColor("#FFFFFF")}
           >
             <div className="flex items-center space-x-2 m-2">
               <Plus />
