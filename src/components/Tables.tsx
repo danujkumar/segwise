@@ -1,4 +1,3 @@
-import * as React from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -12,6 +11,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { Box, Collapse, IconButton, Typography } from "@mui/material";
 import { useState } from "react";
+import Modal from "@/views/Modal";
 
 const formatValue = (value: string | number): string => {
   if (typeof value === "number") {
@@ -72,22 +72,20 @@ function createData(
   };
 }
 
+
+
 function Row(props: Readonly<{ row: ReturnType<typeof createData> }>) {
   const { row } = props;
-  const [open, setOpen] = React.useState(false);
-  const [color, setColor] = React.useState("#FFFFFF");
+  const [open, setOpen] = useState(false);
+  const [color, setColor] = useState("#FFFFFF");
+  const [modal, setModal] = useState(false);
   return (
     <>
       <TableRow
         style={{ backgroundColor: color }}
         sx={{ "& > *": { borderBottom: "unset" } }}
       >
-        <TableCell
-          onClick={() => { 
-            color === "#E3FA99" ? setColor("#FFFFFF") : setColor("#E3FA99");
-          }}
-          
-        >
+        <TableCell>
           <IconButton
             aria-label="expand row"
             size="small"
@@ -101,6 +99,7 @@ function Row(props: Readonly<{ row: ReturnType<typeof createData> }>) {
         </TableCell>
         <TableCell
           onClick={() => { 
+            setModal(!modal);
             color === "#E3FA99" ? setColor("#FFFFFF") : setColor("#E3FA99");
           }}
           
@@ -111,6 +110,7 @@ function Row(props: Readonly<{ row: ReturnType<typeof createData> }>) {
         </TableCell>
         <TableCell
           onClick={() => { 
+            setModal(!modal);
             color === "#E3FA99" ? setColor("#FFFFFF") : setColor("#E3FA99");
           }}
           
@@ -120,6 +120,7 @@ function Row(props: Readonly<{ row: ReturnType<typeof createData> }>) {
         </TableCell>
         <TableCell
           onClick={() => { 
+            setModal(!modal);
             color === "#E3FA99" ? setColor("#FFFFFF") : setColor("#E3FA99");
           }}
           
@@ -129,6 +130,7 @@ function Row(props: Readonly<{ row: ReturnType<typeof createData> }>) {
         </TableCell>
         <TableCell
           onClick={() => { 
+            setModal(!modal);
             color === "#E3FA99" ? setColor("#FFFFFF") : setColor("#E3FA99");
           }}
           
@@ -138,6 +140,7 @@ function Row(props: Readonly<{ row: ReturnType<typeof createData> }>) {
         </TableCell>
         <TableCell
           onClick={() => { 
+            setModal(!modal);
             color === "#E3FA99" ? setColor("#FFFFFF") : setColor("#E3FA99");
           }}
           
@@ -147,6 +150,7 @@ function Row(props: Readonly<{ row: ReturnType<typeof createData> }>) {
         </TableCell>
         <TableCell
           onClick={() => { 
+            setModal(!modal);
             color === "#E3FA99" ? setColor("#FFFFFF") : setColor("#E3FA99");
           }}
           
@@ -156,6 +160,7 @@ function Row(props: Readonly<{ row: ReturnType<typeof createData> }>) {
         </TableCell>
         <TableCell
           onClick={() => { 
+            setModal(!modal);
             color === "#E3FA99" ? setColor("#FFFFFF") : setColor("#E3FA99");
           }}
           
@@ -165,6 +170,7 @@ function Row(props: Readonly<{ row: ReturnType<typeof createData> }>) {
         </TableCell>
         <TableCell
           onClick={() => { 
+            setModal(!modal);
             color === "#E3FA99" ? setColor("#FFFFFF") : setColor("#E3FA99");
           }}
           
@@ -174,6 +180,7 @@ function Row(props: Readonly<{ row: ReturnType<typeof createData> }>) {
         </TableCell>
         <TableCell
           onClick={() => { 
+            setModal(!modal);
             color === "#E3FA99" ? setColor("#FFFFFF") : setColor("#E3FA99");
           }}
           
@@ -183,6 +190,7 @@ function Row(props: Readonly<{ row: ReturnType<typeof createData> }>) {
         </TableCell>
         <TableCell
           onClick={() => { 
+            setModal(!modal);
             color === "#E3FA99" ? setColor("#FFFFFF") : setColor("#E3FA99");
           }}
           
@@ -192,6 +200,7 @@ function Row(props: Readonly<{ row: ReturnType<typeof createData> }>) {
         </TableCell>
         <TableCell
           onClick={() => { 
+            setModal(!modal);
             color === "#E3FA99" ? setColor("#FFFFFF") : setColor("#E3FA99");
           }}
           
@@ -201,6 +210,7 @@ function Row(props: Readonly<{ row: ReturnType<typeof createData> }>) {
         </TableCell>
         <TableCell
           onClick={() => { 
+            setModal(!modal);
             color === "#E3FA99" ? setColor("#FFFFFF") : setColor("#E3FA99");
           }}
           
@@ -210,6 +220,7 @@ function Row(props: Readonly<{ row: ReturnType<typeof createData> }>) {
         </TableCell>
         <TableCell
           onClick={() => { 
+            setModal(!modal);
             color === "#E3FA99" ? setColor("#FFFFFF") : setColor("#E3FA99");
           }}
           
@@ -219,6 +230,7 @@ function Row(props: Readonly<{ row: ReturnType<typeof createData> }>) {
         </TableCell>
         <TableCell
           onClick={() => { 
+            setModal(!modal);
             color === "#E3FA99" ? setColor("#FFFFFF") : setColor("#E3FA99");
           }}
           
@@ -228,6 +240,7 @@ function Row(props: Readonly<{ row: ReturnType<typeof createData> }>) {
         </TableCell>
         <TableCell
           onClick={() => { 
+            setModal(!modal);
             color === "#E3FA99" ? setColor("#FFFFFF") : setColor("#E3FA99");
           }}
           
@@ -237,6 +250,7 @@ function Row(props: Readonly<{ row: ReturnType<typeof createData> }>) {
         </TableCell>
         <TableCell
           onClick={() => { 
+            setModal(!modal);
             color === "#E3FA99" ? setColor("#FFFFFF") : setColor("#E3FA99");
           }}
           
@@ -295,12 +309,15 @@ function Row(props: Readonly<{ row: ReturnType<typeof createData> }>) {
           </Collapse>
         </TableCell>
       </TableRow>
+      {modal && <Modal data={row} />}
     </>
   );
 }
 
 export default function Tables() {
   const [sortData, setSortData] = useState(data);
+  const [asd, setASD] = useState(true);
+
   return (
     <div className="flex justify-center mt-5">
       <TableContainer
@@ -327,7 +344,8 @@ export default function Tables() {
               <TableCell />
               <TableCell
                 onClick={() => {
-                  setSortData(sortJSONByKey(data, "creative_name"));
+                  setASD(!asd);
+                  setSortData(sortJSONByKey(data, "creative_name", asd));
                 }}
                 style={{fontWeight:'bold'}}
               >
@@ -335,7 +353,8 @@ export default function Tables() {
               </TableCell>
               <TableCell
                 onClick={() => {
-                  setSortData(sortJSONByKey(data, "creative_id"));
+                  setASD(!asd);
+                  setSortData(sortJSONByKey(data, "creative_id", asd));
                 }}
                 style={{fontWeight:'bold'}}
                 align="center"
@@ -344,7 +363,8 @@ export default function Tables() {
               </TableCell>
               <TableCell
                 onClick={() => {
-                  setSortData(sortJSONByKey(data, "country"));
+                  setASD(!asd);
+                  setSortData(sortJSONByKey(data, "country",asd));
                 }}
                 align="center"
                 style={{fontWeight:'bold'}}
@@ -353,7 +373,8 @@ export default function Tables() {
               </TableCell>
               <TableCell
                 onClick={() => {
-                  setSortData(sortJSONByKey(data, "ad_network"));
+                  setASD(!asd);
+                  setSortData(sortJSONByKey(data, "ad_network", asd));
                 }}
                 align="center"
                 style={{fontWeight:'bold'}}
@@ -362,7 +383,8 @@ export default function Tables() {
               </TableCell>
               <TableCell
                 onClick={() => {
-                  setSortData(sortJSONByKey(data, "os"));
+                  setASD(!asd);
+                  setSortData(sortJSONByKey(data, "os", asd));
                 }}
                 align="center"
                 style={{fontWeight:'bold'}}
@@ -371,7 +393,8 @@ export default function Tables() {
               </TableCell>
               <TableCell
                 onClick={() => {
-                  setSortData(sortJSONByKey(data, "campaign"));
+                  setASD(!asd);
+                  setSortData(sortJSONByKey(data, "campaign", asd));
                 }}
                 align="center"
                 style={{fontWeight:'bold'}}
@@ -380,7 +403,8 @@ export default function Tables() {
               </TableCell>
               <TableCell
                 onClick={() => {
-                  setSortData(sortJSONByKey(data, "ad_group"));
+                  setASD(!asd);
+                  setSortData(sortJSONByKey(data, "ad_group", asd));
                 }}
                 align="center"
                 style={{fontWeight:'bold'}}
@@ -389,7 +413,8 @@ export default function Tables() {
               </TableCell>
               <TableCell
                 onClick={() => {
-                  setSortData(sortJSONByKey(data, "ipm"));
+                  setASD(!asd);
+                  setSortData(sortJSONByKey(data, "ipm", asd));
                 }}
                 align="center"
                 style={{fontWeight:'bold'}}
@@ -398,7 +423,8 @@ export default function Tables() {
               </TableCell>
               <TableCell
                 onClick={() => {
-                  setSortData(sortJSONByKey(data, "ctr"));
+                  setASD(!asd);
+                  setSortData(sortJSONByKey(data, "ctr", asd));
                 }}
                 align="center"
                 style={{fontWeight:'bold'}}
@@ -407,7 +433,8 @@ export default function Tables() {
               </TableCell>
               <TableCell
                 onClick={() => {
-                  setSortData(sortJSONByKey(data, "spend"));
+                  setASD(!asd);
+                  setSortData(sortJSONByKey(data, "spend",  asd));
                 }}
                 align="center"
                 style={{fontWeight:'bold'}}
@@ -416,7 +443,8 @@ export default function Tables() {
               </TableCell>
               <TableCell
                 onClick={() => {
-                  setSortData(sortJSONByKey(data, "impressions"));
+                  setASD(!asd);
+                  setSortData(sortJSONByKey(data, "impressions", asd));
                 }}
                 align="center"
                 style={{fontWeight:'bold'}}
@@ -425,7 +453,8 @@ export default function Tables() {
               </TableCell>
               <TableCell
                 onClick={() => {
-                  setSortData(sortJSONByKey(data, "clicks"));
+                  setASD(!asd);
+                  setSortData(sortJSONByKey(data, "clicks", asd));
                 }}
                 align="center"
                 style={{fontWeight:'bold'}}
@@ -434,7 +463,8 @@ export default function Tables() {
               </TableCell>
               <TableCell
                 onClick={() => {
-                  setSortData(sortJSONByKey(data, "cpm"));
+                  setASD(!asd);
+                  setSortData(sortJSONByKey(data, "cpm", asd));
                 }}
                 align="center"
                 style={{fontWeight:'bold'}}
@@ -443,7 +473,8 @@ export default function Tables() {
               </TableCell>
               <TableCell
                 onClick={() => {
-                  setSortData(sortJSONByKey(data, "cpc"));
+                  setASD(!asd);
+                  setSortData(sortJSONByKey(data, "cpc", asd));
                 }}
                 align="center"
                 style={{fontWeight:'bold'}}
@@ -452,7 +483,8 @@ export default function Tables() {
               </TableCell>
               <TableCell
                 onClick={() => {
-                  setSortData(sortJSONByKey(data, "cpi"));
+                  setASD(!asd);
+                  setSortData(sortJSONByKey(data, "cpi", asd));
                 }}
                 align="center"
                 style={{fontWeight:'bold'}}
@@ -461,7 +493,8 @@ export default function Tables() {
               </TableCell>
               <TableCell
                 onClick={() => {
-                  setSortData(sortJSONByKey(data, "installs"));
+                  setASD(!asd);
+                  setSortData(sortJSONByKey(data, "installs", asd));
                 }}
                 align="center"
                 style={{fontWeight:'bold'}}
