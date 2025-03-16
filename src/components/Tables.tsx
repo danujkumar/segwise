@@ -342,7 +342,7 @@ export default function Tables() {
             fontSize: "16px",
             position: "sticky",
             top: 0,
-            zIndex: 15
+            zIndex: 5
           }} >
             <TableRow style={{border:"3px"}}>
               <TableCell />

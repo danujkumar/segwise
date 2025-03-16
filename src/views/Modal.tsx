@@ -204,7 +204,7 @@ const styles: Record<string, React.CSSProperties> = {
     position: 'absolute',
     bottom: '0',
     right: '5px',
-    zIndex: 1000,
+    zIndex: 50,
     borderRadius: ' 10px 10px 0px 0px',
     padding: '10px 10px',
     // boxShadow: '0 0 2px rgba(0,0,0,0.5)',
