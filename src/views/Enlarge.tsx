@@ -15,25 +15,98 @@ interface DataItem {
 }
 
 const data: DataItem[] = [
-  { name: "IPM", value: 2.7001 },
-  { name: "CTR", value: 0.8449 },
-  { name: "Spend", value: 7.01 },
-  { name: "Impressions", value: 11481 },
-  { name: "Clicks", value: 97 },
-  { name: "CPM", value: 0.6106 },
-  { name: "CPC", value: 0.0723 },
-  { name: "CPI", value: 0.2261 },
-  { name: "Installs", value: 31 },
+  { name: "Imp", value: 0 },
+  { name: "Clicks", value: 0 }
 ];
 
+const smalldata: DataItem[] = [
+  { name: "IPM", value: 0 },
+  { name: "CTR", value: 0 },
+  { name: "Spend", value: 0 },
+  { name: "CPM", value: 0 },
+  { name: "CPC", value: 0 },
+  { name: "CPI", value: 0 },
+  { name: "Installs", value: 0 },
+];
 
+type NumProps = {
+    creative_name: string;
+    creative_id: string;
+    country: string;
+    ad_network: string;
+    os: string;
+    campaign: string;
+    ad_group: string;
+    ipm: number;
+    ctr: number;
+    spend: number;
+    impressions: number;
+    clicks: number;
+    cpm: number;
+    cpc: number;
+    cpi: number;
+    installs: number;
+    tags: {
+      concept: string;
+      atype: string;
+      alanguage: string;
+      cta: string;
+      objects: string[];
+      ctalanguage: string;
+      logopresent: string;
+      cta_placement: string;
+      bgcolor: string;
+      bgsetting: string;
+      ctabgcolor: string;
+    };
+}
 
-const BarChartComponent: React.FC = () => {
+const BarChartComponent: React.FC<{ num_data: NumProps }> = ({num_data}) => {
+  const [datas, setDatas] = useState(data)
+
+  useEffect(() => {
+    setDatas([
+      { name: "Imp", value: num_data.impressions },
+      { name: "Clicks", value: num_data.clicks },
+      {name: "Installs", value: num_data.installs},
+      {name: "Spends", value: num_data.spend}
+    ]);
+  }, []);
   return (
     // <Card sx={{ p: 2, borderRadius: "16px" }}>
     <CardContent>
       <ResponsiveContainer width="100%" height={300}>
-        <BarChart data={data}>
+        <BarChart data={datas}>
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Bar dataKey="value" fill="#C0E656" radius={[4, 4, 0, 0]} />
+        </BarChart>
+      </ResponsiveContainer>
+    </CardContent>
+    // </Card>
+  );
+};
+
+const SmallBarChartComponent: React.FC<{ num_data: NumProps }> = ({num_data}) => {
+  const [datas, setDatas] = useState(smalldata)
+
+  useEffect(() => {
+    setDatas([
+      { name: "IPM", value: num_data.ipm },
+      { name: "CTR", value: num_data.ctr },
+      { name: "Spend", value: num_data.spend },
+      { name: "CPM", value: num_data.cpm },
+      { name: "CPC", value: num_data.cpc },
+      { name: "CPI", value: num_data.cpi },
+      { name: "Installs", value: num_data.installs },
+    ]);
+  }, []);
+  return (
+    // <Card sx={{ p: 2, borderRadius: "16px" }}>
+    <CardContent>
+      <ResponsiveContainer width="100%" height={300}>
+        <BarChart data={datas}>
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
@@ -46,17 +119,17 @@ const BarChartComponent: React.FC = () => {
 };
 
 interface DataProps {
-    concept: string;
-    atype: string;
-    alanguage: string;
-    cta: string;
-    objects: string[];
-    ctalanguage: string;
-    logopresent: string;
-    cta_placement: string;
-    bgcolor: string;
-    bgsetting: string;
-    ctabgcolor: string;
+  concept: string;
+  atype: string;
+  alanguage: string;
+  cta: string;
+  objects: string[];
+  ctalanguage: string;
+  logopresent: string;
+  cta_placement: string;
+  bgcolor: string;
+  bgsetting: string;
+  ctabgcolor: string;
 }
 const CtaComponent: React.FC<{ data: DataProps }> = ({ data }) => {
   return (
@@ -147,7 +220,7 @@ interface Props {
       ctabgcolor: string;
     };
   };
-  onClose: (close: boolean) => void; 
+  onClose: (close: boolean) => void;
 }
 
 function Enlarge({ data, onClose }: Readonly<Props>) {
@@ -171,10 +244,16 @@ function Enlarge({ data, onClose }: Readonly<Props>) {
       campaign: data.campaign,
       ad_group: data.ad_group,
     });
-  }, [])
+  }, []);
 
   return (
-    <div className="border-1 border-gray-200" style={styles.container} onClick={() => {onClose(false)}}>
+    <div
+      className="border-1 border-gray-200"
+      style={styles.container}
+      onClick={() => {
+        onClose(false);
+      }}
+    >
       <span
         style={{
           cursor: "pointer",
@@ -187,7 +266,6 @@ function Enlarge({ data, onClose }: Readonly<Props>) {
       >
         x
       </span>
-
       <div
         style={{
           height: "100%",
@@ -293,19 +371,28 @@ function Enlarge({ data, onClose }: Readonly<Props>) {
           </div>
         </div>
       </div>
+      <div style={{ overflow:'auto', marginLeft:"5px",  display: "flex", flexDirection: "column", width: "40vw", height: "100%" }}>
       <div
         style={{
-          height: "100%",
           // backgroundColor: 'red',
-          width: "45%",
           borderRadius: "5px",
           borderWidth: "1px",
           borderColor: "#e5e7eb",
-          justifyContent: "center",
-          alignItems: "center",
+          marginBottom:"5px"
         }}
       >
-        <BarChartComponent />
+        <BarChartComponent num_data={data} />
+      </div>
+      <div
+        style={{
+          // backgroundColor: 'red',
+          borderRadius: "5px",
+          borderWidth: "1px",
+          borderColor: "#e5e7eb"
+        }}
+      >
+        <SmallBarChartComponent num_data={data} />
+      </div>
       </div>
     </div>
   );
