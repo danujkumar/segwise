@@ -1,4 +1,3 @@
-import React from 'react'
 import SegwiseLogo from '../assets/SegwiseLogo'
 
 function TopBar() {
