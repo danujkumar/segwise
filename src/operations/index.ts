@@ -61,19 +61,27 @@ export function searchKeyword(data: CreateData[], keyword: string) {
     return result;
 }
 
-export function sortJSONByKey(data: CreateData[], sortKey: keyof CreateData) {
-    return [...data].sort((a, b) => {
-        const valueA = a[sortKey];
-        const valueB = b[sortKey];
+export function sortJSONByKey(
+  data: CreateData[],
+  sortKey: keyof CreateData,
+  asd: boolean
+) {
+  return [...data].sort((a, b) => {
+    const valueA = a[sortKey];
+    const valueB = b[sortKey];
 
-        if (typeof valueA === "string" && typeof valueB === "string") {
-            return valueA.localeCompare(valueB); // Sort alphabetically
-        } else if (typeof valueA === "number" && typeof valueB === "number") {
-            return valueA - valueB; // Sort numerically
-        }
-        return 0;
-    });
+    let comparison = 0;
+
+    if (typeof valueA === "string" && typeof valueB === "string") {
+      comparison = valueA.localeCompare(valueB); // Alphabetical sorting
+    } else if (typeof valueA === "number" && typeof valueB === "number") {
+      comparison = valueA - valueB; // Numerical sorting
+    }
+
+    return asd ? comparison : -comparison; // Reverse sorting if descending
+  });
 }
+
 
 type Operator =
   | "is"
